@@ -27,4 +27,7 @@ constexpr uint8_t TOUCH_BYTES = 2;
 constexpr int MPR121_irqpin_1 = 8;
 constexpr int MPR121_irqpin_2 = 7;
 
+constexpr int portamentoPin = 14;
+//Buttons 15-22 for octave
+
 #endif
