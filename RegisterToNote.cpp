@@ -4,7 +4,6 @@ const int noteButtonMap[EWI_BUTTONS] = {
   11,10,9,8,7,6,5,4,3,2,1,0,23
 };
 
-
 const byte notePitches[EWI_NOTERANGE] = {
   PitchToNote::B3b_,  // A#3
   PitchToNote::B3_,   // B3
