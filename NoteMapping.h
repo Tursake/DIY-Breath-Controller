@@ -56,6 +56,26 @@ bool isBlowOnly(int noteIndex) {
     return true;
 }
 
+// Updates currentOctave based on octave buttons (touchStates)
+// Holding two buttons next to each other selects an octave:
+// 16&17 = default (0), 15&16 = one lower (-1), 17&18 = one higher (+1), etc.
+static inline void updateOctave(boolean* touchStates, int &currentOctave) {
+    const int OCTAVE_BUTTONS[] = {15,16,17,18,19,20,21,22};
+    int selectedOctave = 0; // default octave
+    bool pairFound = false;
+
+    for (int i = 0; i < 7; i++) { // check all consecutive pairs
+        bool firstPressed = touchStates[OCTAVE_BUTTONS[i]];
+        bool secondPressed = touchStates[OCTAVE_BUTTONS[i+1]];
+
+        if (firstPressed && secondPressed && !pairFound) {
+            selectedOctave = i - 1; // 16&17 = default = 0
+            pairFound = true;       // stop after first valid pair
+        }
+    }
+
+    currentOctave = selectedOctave;
+}
 
 
 
